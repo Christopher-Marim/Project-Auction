@@ -1,7 +1,11 @@
 import './styles.scss';
+
+import { useHistory } from 'react-router';
+
 export function ClientScreen() {
+  const history = useHistory();
   return (
-    <div>
+    <div id='containerClient'>
       <section className="bdg-sect" id="i7x5k">
         <h1 className="heading" id="i24kn">
           Leilão
@@ -48,7 +52,7 @@ export function ClientScreen() {
           <textarea className="textarea" id="irl6i"></textarea>
         </div>
         <div className="form-group">
-          <button type="submit" className="button" id="i0v76">
+          <button type="button" className="button" id="i0v76" onClick={()=>{history.push('/pages/auctions')}}>
             Enviar
           </button>
         </div>

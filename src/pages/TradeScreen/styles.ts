@@ -4,16 +4,15 @@ export const Container = styled.div`
 display:flex;
 flex-direction:column;
 height:100vh;
-padding:100px;
+padding:50px 100px;
 background:#e3e9ff;
 align-items:center;
 
-.title{
-    display:flex;
-    align-items:center;
-    width: 490px;
-    padding:10px;
-}
+.title {
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+  }
 
 `
 
@@ -27,12 +26,28 @@ font-size: 62px;
 
 export const List = styled.div`
 display:flex;
-height:600px;
+height:700px;
 width:70%;
 border-radius:10px;
-flex-direction:column;
+flex-direction:column-reverse;
 background:transparent;
 padding:10px;
+overflow-x:hidden;
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:linear-gradient( rgba(5,82,171,1) , rgba(0,219,146,1) );
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,219,146,1); 
+}
 `
 export const Item = styled.div`
 display:flex;
