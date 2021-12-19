@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding:100px;
+  }
+  .form{
+    border-radius:3px;
+    padding:10px 15px;
+    background-color:rgba(0,0,0,0.2);
+  }
+  .input{
+    width:100%;
+    margin-bottom:15px;
+    padding:7px 10px;
+    border-radius:2px;
+    color:#fff;
+    background-color:#554c57;
+    border:none;
+  }
+  .textarea{
+    width:100%;
+    margin-bottom:15px;
+    padding:7px 10px;
+    border-radius:2px;
+    color:#fff;
+    background-color:#554c57;
+    border:none;
+  }
+  .label{
+    width:100%;
+    display:block;
+  }
+  .button{
+    width:100%;
+    margin:15px 0;
+    background-color:#785580;
+    border:none;
+    color:#fff;
+    border-radius:2px;
+    padding:7px 10px;
+    font-size:1em;
+    cursor:pointer;
+  }
+  .heading{
+    padding:10px;
+  }
+  .paragraph{
+    padding:10px;
+  }
+  .bdg-sect{
+    padding-top:100px;
+    padding-bottom:100px;
+    font-family:Helvetica, serif;
+    background-color:#fafafa;
+  }
+  #i0v76{
+    border:solid #ffffff;
+    opacity:1;
+    background-image:linear-gradient(#57b828,#57b828);
+    background-repeat:repeat;
+    background-position:left top;
+    background-attachment:scroll;
+    background-size:auto;
+  }
+  #irl6i{
+    background-image:linear-gradient(#ffffff,#ffffff);
+    background-repeat:repeat;
+    background-position:left top;
+    background-attachment:scroll;
+    background-size:auto;
+    border:1px solid #cdcdcd;
+    color:#000000;
+  }
+  #i972{
+    background-image:linear-gradient(#ffffff,#ffffff);
+    background-repeat:repeat;
+    background-position:left top;
+    background-attachment:scroll;
+    background-size:auto;
+  }
+  #isuy{
+    background-image:linear-gradient(#ffffff,#ffffff);
+    background-repeat:repeat;
+    background-position:left top;
+    background-attachment:scroll;
+    background-size:auto;
+    border:1px solid #cdcdcd;
+    color:#000000;
+  }
+  #i20j{
+    background-image:linear-gradient(#ffffff,#ffffff);
+    background-repeat:repeat;
+    background-position:left top;
+    background-attachment:scroll;
+    background-size:auto;
+    border:1px solid #d8d8d8;
+    color:#000000;
+  }
+  #i24kn{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+  }
+  #isz2w{
+    border:0 solid black;
+  }
+  #i7x5k{
+    padding:40px 0 10px 0;
+  }
+  #ij9cj{
+    display:block;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+  }
+  
