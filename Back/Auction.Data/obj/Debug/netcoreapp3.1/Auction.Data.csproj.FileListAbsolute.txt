@@ -1,0 +1,10 @@
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\bin\Debug\netcoreapp3.1\Auction.Data.deps.json
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\bin\Debug\netcoreapp3.1\Auction.Data.dll
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\bin\Debug\netcoreapp3.1\Auction.Data.pdb
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.csproj.AssemblyReference.cache
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.AssemblyInfoInputs.cache
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.AssemblyInfo.cs
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.csproj.CoreCompileInputs.cache
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.dll
+C:\Users\guisi\source\repos\SistemasBackEnd\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.pdb
