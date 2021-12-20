@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Ws.ServerTemp/1.0.0": {
+        "dependencies": {
+          "Auction.Data": "1.0.0"
+        },
+        "runtime": {
+          "Ws.ServerTemp.dll": {}
+        }
+      },
+      "Auction.Data/1.0.0": {
+        "runtime": {
+          "Auction.Data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Ws.ServerTemp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Auction.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1011,6 +1011,19 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Ws.ServerTemp/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Auction.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Ws.ServerTemp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Ws.ServerTemp.dll": {}
+        }
       }
     }
   },
@@ -3594,12 +3607,18 @@
       "type": "project",
       "path": "../Ws.Server/Ws.Server.csproj",
       "msbuildProject": "../Ws.Server/Ws.Server.csproj"
+    },
+    "Ws.ServerTemp/1.0.0": {
+      "type": "project",
+      "path": "../Ws.ServerTemp/Ws.ServerTemp.csproj",
+      "msbuildProject": "../Ws.ServerTemp/Ws.ServerTemp.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "System.Net.WebSockets.Client >= 4.3.2",
-      "Ws.Server >= 1.0.0"
+      "Ws.Server >= 1.0.0",
+      "Ws.ServerTemp >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3634,6 +3653,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "C:\\Users\\guisi\\Project-Auction\\Back\\Ws.ServerTemp\\Ws.ServerTemp.csproj": {
+              "projectPath": "C:\\Users\\guisi\\Project-Auction\\Back\\Ws.ServerTemp\\Ws.ServerTemp.csproj"
+            },
             "C:\\Users\\guisi\\Project-Auction\\Back\\Ws.Server\\Ws.Server.csproj": {
               "projectPath": "C:\\Users\\guisi\\Project-Auction\\Back\\Ws.Server\\Ws.Server.csproj"
             }

@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
+using System.Timers;
 
 namespace Ws.ServerTemp.ServerRequests
 {
@@ -12,6 +14,7 @@ namespace Ws.ServerTemp.ServerRequests
         public List<User> registeredUsers;
         public AuctionModel currentAuction;
         public int counter;
+        static Timer timer;
 
         public static ClientRequests GetInstance()
         {
@@ -26,6 +29,19 @@ namespace Ws.ServerTemp.ServerRequests
         {
             registeredUsers = new List<User>();
             counter = 0;
+        }
+
+        public void StartTimer(int minutes) 
+        {
+            timer = new Timer(minutes * 60000);
+            timer.AutoReset = false;
+            timer.Elapsed += (source, eventArgs) =>
+            {
+                Console.WriteLine("Executando timer");
+            };
+            timer.Interval = minutes * 60000;
+            timer.Start();
+            
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Ws.Server.ServerRequests;
+using Ws.ServerTemp.ServerRequests;
 
 namespace Ws.ClientTemp
 {
@@ -36,6 +37,7 @@ namespace Ws.ClientTemp
                     Console.WriteLine("Connection attempt " + attempts);
                     // Change IPAddress.Loopback to a remote IP to connect to a remote host.
                     ClientSocket.Connect(IPAddress.Loopback, PORT);
+                    MulticastBroadcast.JoinMulticastGroup();
                 }
                 catch (SocketException)
                 {
@@ -107,7 +109,7 @@ namespace Ws.ClientTemp
 
                 Console.Write("Digite o seu ID:\n");
                 var id = Console.ReadLine();
-                message = message + "id,";
+                message = message + id + ",";
 
                 double newValue = 0;
                 while (newValue < 10)
@@ -130,11 +132,11 @@ namespace Ws.ClientTemp
         }
 
         /// <summary>
-        /// Sends a string to the server with UTF8 encoding.
+        /// Sends a string to the server with ASCII encoding.
         /// </summary>
         private static void SendString(string text)
         {
-            byte[] buffer = Encoding.UTF8.GetBytes(text);
+            byte[] buffer = Encoding.ASCII.GetBytes(text);
             ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None);
         }
 
@@ -145,7 +147,7 @@ namespace Ws.ClientTemp
             if (received == 0) return;
             var data = new byte[received];
             Array.Copy(buffer, data, received);
-            string text = Encoding.UTF8.GetString(data);
+            string text = Encoding.ASCII.GetString(data);
             Console.WriteLine(text);
         }
     }

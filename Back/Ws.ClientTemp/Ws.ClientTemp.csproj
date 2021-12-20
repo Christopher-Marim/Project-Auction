@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Ws.ServerTemp\Ws.ServerTemp.csproj" />
     <ProjectReference Include="..\Ws.Server\Ws.Server.csproj" />
   </ItemGroup>
 

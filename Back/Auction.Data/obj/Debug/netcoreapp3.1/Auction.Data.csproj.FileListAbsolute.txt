@@ -17,3 +17,4 @@ C:\Users\guisi\Project-Auction\Back\Auction.Data\obj\Debug\netcoreapp3.1\Auction
 C:\Users\guisi\Project-Auction\Back\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.csproj.CoreCompileInputs.cache
 C:\Users\guisi\Project-Auction\Back\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.dll
 C:\Users\guisi\Project-Auction\Back\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.pdb
+C:\Users\guisi\Project-Auction\Back\Auction.Data\obj\Debug\netcoreapp3.1\Auction.Data.csproj.AssemblyReference.cache

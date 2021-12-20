@@ -9,7 +9,8 @@
       "Ws.ClientTemp/1.0.0": {
         "dependencies": {
           "System.Net.WebSockets.Client": "4.3.2",
-          "Ws.Server": "1.0.0"
+          "Ws.Server": "1.0.0",
+          "Ws.ServerTemp": "1.0.0"
         },
         "runtime": {
           "Ws.ClientTemp.dll": {}
@@ -554,6 +555,14 @@
         "runtime": {
           "Ws.Server.dll": {}
         }
+      },
+      "Ws.ServerTemp/1.0.0": {
+        "dependencies": {
+          "Auction.Data": "1.0.0"
+        },
+        "runtime": {
+          "Ws.ServerTemp.dll": {}
+        }
       }
     }
   },
@@ -996,6 +1005,11 @@
       "sha512": ""
     },
     "Ws.Server/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Ws.ServerTemp/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

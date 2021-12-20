@@ -9,6 +9,7 @@ namespace Auction.Data.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Winner { get; set; }
+        public Guid hash { get; set; }
 
         public User(string name, int id)
         {
