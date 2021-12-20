@@ -8,12 +8,14 @@ namespace Auction.Data.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool Winner { get; set; }
 
         public User(string name, int id)
         {
             //Id = Guid.NewGuid();
             Id = id;
             Name = name;
+            Winner = false;
         }
     }
 }

@@ -81,6 +81,20 @@ namespace Ws.Server
                         context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     }
                 }
+                if (context.Request.Path == "/createAuction")
+                {
+                    if (context.WebSockets.IsWebSocketRequest)
+                    {
+                        using (WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync())
+                        {
+                            await ClientRequests.CreateAuction(context, webSocket);
+                        }
+                    }
+                    else
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    }
+                }
             });
         }
 

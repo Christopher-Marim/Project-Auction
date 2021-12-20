@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -9,60 +11,142 @@ namespace Ws.ClientTemp
 {
     class Program
     {
-        static async Task Main(string[] args)
+        private static readonly Socket ClientSocket = new Socket
+            (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+        private const int PORT = 5000;
+
+        static void Main()
         {
-            while (true)
+            Console.Title = "Client";
+            ConnectToServer();
+            RequestLoop();
+            Exit();
+        }
+
+        private static void ConnectToServer()
+        {
+            int attempts = 0;
+
+            while (!ClientSocket.Connected)
             {
-                Console.WriteLine("Press enter to continue...");
-                var command = Console.ReadLine();
-                string callToServer;
-                switch (command)
+                try
                 {
-                    case "1":
-                        callToServer = "getCurrentTime";
-                        break;
-                    case "2":
-                        callToServer = "connectToAuction";
-                        break;
-                    case "3":
-                        callToServer = "registerClient";
-                        break;
-                    case "0":
-                        System.Environment.Exit(0);
-                        callToServer = "";
-                        break;
-                    default:
-                        callToServer = "getCurrentTime";
-                        break;
+                    attempts++;
+                    Console.WriteLine("Connection attempt " + attempts);
+                    // Change IPAddress.Loopback to a remote IP to connect to a remote host.
+                    ClientSocket.Connect(IPAddress.Loopback, PORT);
                 }
-
-                using (ClientWebSocket client = new ClientWebSocket())
+                catch (SocketException)
                 {
-                    Uri serviceUri = new Uri($"ws://localhost:5000/{callToServer}");
-                    var cTs = new CancellationTokenSource();
-                    cTs.CancelAfter(TimeSpan.FromSeconds(120));
-                    try
-                    {
-                        await client.ConnectAsync(serviceUri, cTs.Token);
-
-                        ArraySegment<byte> byteToSend = new ArraySegment<byte>(Encoding.UTF8.GetBytes(callToServer));
-                        await client.SendAsync(byteToSend, WebSocketMessageType.Text, true, cTs.Token);
-                        var responseBuffer = new byte[1024];
-                        var offset = 0;
-                        var packet = 1024;
-                        ArraySegment<byte> byteReceived = new ArraySegment<byte>(responseBuffer, offset, packet);
-                        WebSocketReceiveResult response = await client.ReceiveAsync(byteReceived, cTs.Token);
-                        var responseMessage = Encoding.UTF8.GetString(responseBuffer, offset, response.Count);
-                        Console.WriteLine(responseMessage);
-                        await client.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "", cTs.Token);
-                    }
-
-                    catch (WebSocketException e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
+                    Console.Clear();
                 }
             }
+
+            Console.Clear();
+            Console.WriteLine("Connected");
+        }
+
+        private static void RequestLoop()
+        {
+            Console.WriteLine(@"<Type ""exit"" to properly disconnect client>");
+
+            while (true)
+            {
+                SendRequest();
+                ReceiveResponse();
+            }
+        }
+
+        /// <summary>
+        /// Close socket and exit program.
+        /// </summary>
+        private static void Exit()
+        {
+            SendString("exit"); // Tell the server we are exiting
+            ClientSocket.Shutdown(SocketShutdown.Both);
+            ClientSocket.Close();
+            Environment.Exit(0);
+        }
+
+        private static void SendRequest()
+        {
+            Console.Write("Send a request: ");
+            string request = Console.ReadLine();
+            string message = "";
+            if (request.ToLower() == "create auction")
+            {
+                message = "create auction,";
+                Console.WriteLine($"Create a new auction:\n\n");
+                Console.WriteLine("Digite o nome do item:\n");
+                var name = Console.ReadLine();
+                message = message + name + ",";
+                Console.WriteLine("Digite o preço inicial do item:\n");
+                var priceMin = Double.Parse(Console.ReadLine());
+                message = message + priceMin + ",";
+                Console.WriteLine("Digite uma descrição do item caso:\n");
+                var about = Console.ReadLine();
+                message = message + about + ",";
+                Console.WriteLine("Digite quanto tempo deseja que dure o leilão (em minutos):\n");
+                var time = Console.ReadLine();
+                message = message + time;
+
+                SendString(message);
+            }
+            else if (request.ToLower() == "connect to auction")
+            {
+                Console.Write("Digite o seu ID:\n");
+                var id = Console.ReadLine();
+                message = "connect to auction," + id;
+
+                SendString(message);
+            }
+            else if (request.ToLower() == "set new auction price")
+            {
+                message = "set new auction price,";
+
+                Console.Write("Digite o seu ID:\n");
+                var id = Console.ReadLine();
+                message = message + "id,";
+
+                double newValue = 0;
+                while (newValue < 10)
+                {
+                    Console.WriteLine("Escreva em quanto você quer aumentar o lance atual:\n" +
+                        "O valor deve ser superior a 10$");
+                    newValue = Double.Parse(Console.ReadLine());
+                }
+                message = message + newValue.ToString();
+
+                SendString(message);
+            }
+
+            //SendString(message);
+
+            if (request.ToLower() == "exit")
+            {
+                Exit();
+            }
+        }
+
+        /// <summary>
+        /// Sends a string to the server with UTF8 encoding.
+        /// </summary>
+        private static void SendString(string text)
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(text);
+            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None);
+        }
+
+        private static void ReceiveResponse()
+        {
+            var buffer = new byte[2048];
+            int received = ClientSocket.Receive(buffer, SocketFlags.None);
+            if (received == 0) return;
+            var data = new byte[received];
+            Array.Copy(buffer, data, received);
+            string text = Encoding.UTF8.GetString(data);
+            Console.WriteLine(text);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Ws.Server.ServerRequests
         private static RequestsToClient _instance;
 
         List<User> registeredUsers;
+        AuctionModel currentAuction;
         int counter;
 
         public static RequestsToClient GetInstance() 
@@ -32,8 +33,6 @@ namespace Ws.Server.ServerRequests
             counter = 0;
         }
 
-
-
         public async Task GetCurrentTime(HttpContext httpContext, WebSocket webSocket)
         {
             var buffer = new byte[1024 * 4];
@@ -48,7 +47,6 @@ namespace Ws.Server.ServerRequests
                     await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"Server says: {DateTime.UtcNow:f}")),
                         result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
                     result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
-                    //Console.WriteLine(result);
                 }
             }
             await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, System.Threading.CancellationToken.None);
@@ -74,7 +72,6 @@ namespace Ws.Server.ServerRequests
                         $"\nCurrentValue: 1000$")),
                         result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
                     result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
-                    //Console.WriteLine(result);
                 }
             }
             await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, System.Threading.CancellationToken.None);
@@ -90,16 +87,76 @@ namespace Ws.Server.ServerRequests
                 while (!result.CloseStatus.HasValue)
                 {
                     string message = Encoding.UTF8.GetString(new ArraySegment<byte>(buffer, 0, result.Count));
-                    Console.WriteLine($"Client says: {message}");
-                    User user = new User($"User{counter}", counter);
-                    registeredUsers.Add(user);
-                    counter += 1;
+                    
                     await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(
-                        $"Server says\nId: {user.Id}" +
-                        $"\nUsername: {user.Name}")),
+                        $"Server says\nId: " +
+                        $"\nUsername: ")),
                         result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
                     result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
-                    //Console.WriteLine(result);
+                }
+            }
+            await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, System.Threading.CancellationToken.None);
+        }
+
+        public async Task CreateAuction(HttpContext context, WebSocket webSocket)
+        {
+            var buffer = new byte[1024 * 4];
+            WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer),
+                System.Threading.CancellationToken.None);
+            if (result != null)
+            {
+                while (!result.CloseStatus.HasValue)
+                {
+                    string message = Encoding.UTF8.GetString(new ArraySegment<byte>(buffer, 0, result.Count));
+                    Console.WriteLine($"Client says: {message}");
+
+                    Console.WriteLine("Digite o nome do item:\n");
+                    var name = Console.ReadLine();
+                    Console.WriteLine("Digite o preço inicial do item:\n");
+                    var priceMin = Double.Parse(Console.ReadLine());
+                    Console.WriteLine("Digite uma descrição do item caso deseje, " +
+                        "caso não, apenas ignore:\n");
+                    var about = Console.ReadLine();
+                    if (about.Length == 0)
+                    {
+                        about = null;
+                    }
+                    Console.WriteLine("Digite quanto tempo deseja que dure o leilão (em minutos):\n");
+                    var time = int.Parse(Console.ReadLine());
+
+                    currentAuction = new AuctionModel(Guid.NewGuid().ToString(), name, $"C:/xesque", priceMin.ToString(),
+                        priceMin, DateTime.Now.ToString(), about, time);
+
+                    await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(
+                        $"Server says\nAuction created!!!" +
+                        $"\nNome do item: {currentAuction.Name}" +
+                        $"\nPreço inicial: {currentAuction.PriceMin.ToString()}" +
+                        $"\nCriado em {currentAuction.Date}" +
+                        $"\nLeilão se encerra em {currentAuction.Time}")),
+                        result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
+                    result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
+                }
+            }
+            await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, System.Threading.CancellationToken.None);
+        }
+
+        public async Task SetNewPriceToAuction(HttpContext context, WebSocket webSocket)
+        {
+            var buffer = new byte[1024 * 4];
+            WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer),
+                System.Threading.CancellationToken.None);
+            if (result != null)
+            {
+                while (!result.CloseStatus.HasValue)
+                {
+                    string message = Encoding.UTF8.GetString(new ArraySegment<byte>(buffer, 0, result.Count));
+                    Console.WriteLine($"Client says: {message}");
+                    currentAuction.Price += Double.Parse(message);
+                    await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(
+                        $"Server says\nAuction : {currentAuction.Name}" +
+                        $"\nNovo maior lance: {currentAuction.Price}")),
+                        result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
+                    result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
                 }
             }
             await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, System.Threading.CancellationToken.None);

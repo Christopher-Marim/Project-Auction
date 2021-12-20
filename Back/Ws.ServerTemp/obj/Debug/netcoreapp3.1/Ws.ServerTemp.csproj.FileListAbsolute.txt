@@ -1,0 +1,17 @@
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.csproj.AssemblyReference.cache
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.AssemblyInfoInputs.cache
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.AssemblyInfo.cs
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.csproj.CoreCompileInputs.cache
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\bin\Debug\netcoreapp3.1\Ws.ServerTemp.exe
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\bin\Debug\netcoreapp3.1\Ws.ServerTemp.deps.json
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\bin\Debug\netcoreapp3.1\Ws.ServerTemp.runtimeconfig.json
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\bin\Debug\netcoreapp3.1\Ws.ServerTemp.runtimeconfig.dev.json
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\bin\Debug\netcoreapp3.1\Ws.ServerTemp.dll
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\bin\Debug\netcoreapp3.1\Ws.ServerTemp.pdb
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\bin\Debug\netcoreapp3.1\Auction.Data.dll
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\bin\Debug\netcoreapp3.1\Auction.Data.pdb
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.csproj.CopyComplete
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.dll
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.pdb
+C:\Users\guisi\Project-Auction\Back\Ws.ServerTemp\obj\Debug\netcoreapp3.1\Ws.ServerTemp.genruntimeconfig.cache
