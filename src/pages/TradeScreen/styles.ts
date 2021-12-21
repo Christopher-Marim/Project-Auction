@@ -54,7 +54,8 @@ display:flex;
 cursor:pointer;
 margin:10px;
 justify-content:space-between;
-padding:10px;
+align-items:center;
+padding:20px;
 width:100%;
 height:150px;
 background: white;
@@ -63,12 +64,16 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 transition: ease-in-out 400ms;
 
 &:hover{
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    box-shadow: rgba(18, 26, 64, 0.30) 0px 2px 4px 0px, rgba(18, 26, 64, 0.30) 0px 2px 16px 0px;
 }
 
 .infos{
     width: 100%;
     margin:0px 40px;
+
+    .name{
+      color:rgba(5,82,171,1);
+    }
 }
 
 .timer{
@@ -88,6 +93,11 @@ img{
     height:125px;
     border-radius:50%;
     object-fit:cover;
-    margin:10px
+    border: double 2px transparent;
+  border-radius: 50%;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, rgba(5, 82, 171, 1), rgba(0, 219, 146, 1));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  }
 }
 `

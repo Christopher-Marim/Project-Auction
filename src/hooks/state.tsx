@@ -6,7 +6,7 @@ interface CurrentAuction {
   image: string;
   price: string;
   date:string;
-  motivo?:string;
+  about?:string;
   priceMin:number;
   time:number;
 }

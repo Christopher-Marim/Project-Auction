@@ -10,7 +10,7 @@ interface Auction {
   price: string;
   priceMin:number;
   date:string;
-  motivo?:string;
+  about?:string;
   time:number;
 }
 
@@ -25,7 +25,7 @@ export function TradeScreen() {
       name: "Carro A",
       price: "R$25.000,00",
       date: "18/12/2021",
-      motivo:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur nobis aliquam non a, consectetur, nesciunt officia iure nisi adipisci quae beatae saepe sed sunt odit, nulla quo suscipit inventore veniam? ',
+      about:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur nobis aliquam non a, consectetur, nesciunt officia iure nisi adipisci quae beatae saepe sed sunt odit, nulla quo suscipit inventore veniam? ',
       time:500000,
       priceMin:10
     },
@@ -36,7 +36,7 @@ export function TradeScreen() {
         name: "Carro B",
         price: "R$25.000,00",
         date: "18/12/2021",
-        motivo:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur nobis aliquam non a, consectetur, nesciunt officia iure nisi adipisci quae beatae saepe sed sunt odit, nulla quo suscipit inventore veniam? ',
+        about:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur nobis aliquam non a, consectetur, nesciunt officia iure nisi adipisci quae beatae saepe sed sunt odit, nulla quo suscipit inventore veniam? ',
         time:200000,
         priceMin:10
       },
@@ -77,7 +77,7 @@ export function TradeScreen() {
           <Item key={item.id} onClick={()=>{handleItemClick(item)}}>
             <img src={item.image}></img>
             <div className="infos">
-              <p>
+              <p className="name">
                 <strong>{item.name}</strong>
               </p>
               <p>Preço: {item.price}</p>

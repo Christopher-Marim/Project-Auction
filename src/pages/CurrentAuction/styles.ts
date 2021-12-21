@@ -41,7 +41,7 @@ export const Infos = styled.div`
   display: flex;
   align-items: center;
   flex-direction:column;
-  height: 100%;
+  height: 90%;
   padding:10px;
   background: white;
   border-right:1.5px #e3e3e3 solid;
@@ -84,7 +84,7 @@ export const Infos = styled.div`
 `;
 export const Actions = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content:center;
   align-items: center;
   flex-direction:column;
   background: white;
@@ -146,5 +146,23 @@ export const List = styled.div`
   align-items: center;
   background: white;
   width:100%;
+
+  .containerPrice{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:10px;
+    p{
+      margin:5px;
+    }
+    .name{
+      color:rgba(5, 82, 171, 1);
+    }
+    .info{
+      font-size:30px;
+      color:rgba(0, 219, 146, 1);
+    }
+  }
   
 `;
